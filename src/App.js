@@ -32,14 +32,18 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
+    console.log("it has been clicked", postId);
+
+
+
   };
 
   return (
     <div className='App'>
-      <div>
+      <>
         <SearchBar />
-        <Posts posts={data.dummy} />
-      </div >
+        <Posts posts={data.dummy} likePost={likePost} />
+      </>
 
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>
