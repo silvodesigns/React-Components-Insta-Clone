@@ -17,7 +17,7 @@ const App = () => {
   // Create a state called `posts` to hold the array of post objects, **initializing to dummyData**.
   // This state is the source of truth for the data inside the app. You won't be needing dummyData anymore.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
-  const [data, setData] = useState({ dummy });
+  const [data, setData] = useState(dummy);
 
 
   const likePost = postId => {
@@ -32,7 +32,15 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
-    console.log("it has been clicked", postId);
+    console.log(postId, "from inside likePost");
+    setData(data.map(ele => {
+      return ele.id === postId ? { ...ele, likes: ele.likes + 1 } : ele
+    }))
+    // //  {lightOn === false ? <img src={white} /> : <img src={yellow} />}
+    // return ele.id === postId ? {...ele, likes: ele.likes+1 }: ele
+
+
+
 
 
 
@@ -42,7 +50,7 @@ const App = () => {
     <div className='App'>
       <>
         <SearchBar />
-        <Posts posts={data.dummy} likePost={likePost} />
+        <Posts posts={dummy} likePost={likePost} />
       </>
 
       {/* Check the implementation of each component, to see what props they require, if any! */}
